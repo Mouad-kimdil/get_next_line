@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   get_next_line_bonus.h                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 15:55:23 by mkimdil           #+#    #+#             */
-/*   Updated: 2023/12/01 15:27:32 by mkimdil          ###   ########.fr       */
+/*   Created: 2023/11/28 15:55:13 by mkimdil           #+#    #+#             */
+/*   Updated: 2023/12/01 15:30:58 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#ifndef GET_NEXT_LINE_BONUS_H
+# define GET_NEXT_LINE_BONUS_H
 
 # include <stdlib.h>
 # include <unistd.h>
 # include <stddef.h>
+# include <limits.h>
 
 # ifndef BUFFER_SIZE
 #  define BUFFER_SIZE 33
 # endif
 
-char	*ft_next_line(char *buffer);
 char	*ft_join(char *buffer, char *buf);
-char	*ft_get_line(char *buffer);
-char	*ft_read_file(int fd, char *res);
 char	*get_next_line(int fd);
 char	*ft_strrchr(char *str, int c);
 char	*ft_strjoin(char *s1, char *s2);

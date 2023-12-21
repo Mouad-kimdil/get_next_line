@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_utils.c                              :+:      :+:    :+:   */
+/*   get_next_line_utils_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mkimdil <mkimdil@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/11/25 15:57:50 by mkimdil           #+#    #+#             */
-/*   Updated: 2023/12/19 22:58:35 by mkimdil          ###   ########.fr       */
+/*   Created: 2023/11/28 15:55:06 by mkimdil           #+#    #+#             */
+/*   Updated: 2023/11/29 17:52:01 by mkimdil          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "get_next_line_bonus.h"
 
 char	*ft_strrchr(char *str, int c)
 {
@@ -28,33 +28,50 @@ char	*ft_strrchr(char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strjoin(char *s1, char *s2)
+char	*ft_strdup(char *str)
 {
-	size_t	i;
-	size_t	len;
+	int		i;
 	char	*ptr;
-	size_t	j;
 
-	if (!s1 || !s2)
+	i = 0;
+	if (!str)
 		return (NULL);
-	len = ft_strlen((char *)s1) + ft_strlen((char *)s2) + 1;
-	ptr = malloc(len);
+	ptr = (char *)malloc(ft_strlen(str) + 1);
 	if (!ptr)
 		return (NULL);
-	i = 0;
-	j = 0;
-	while (s1[i])
+	while (str[i])
 	{
-		ptr[i] = s1[i];
+		ptr[i] = str[i];
 		i++;
 	}
-	while (s2[j])
-	{
-		ptr[i + j] = s2[j];
-		j++;
-	}
-	ptr[i + j] = '\0';
+	ptr[i] = '\0';
 	return (ptr);
+}
+
+char	*ft_strjoin(char *s1, char *s2)
+{
+	int		j;
+	char	*str;
+	char	*str1;
+	int		i;
+
+	i = -1;
+	if (!s1 || !s2)
+		return (ft_strdup(""));
+	else
+		str1 = ft_strdup(s1);
+	str = malloc(sizeof (char) * ((ft_strlen(str1)) + ft_strlen(s2)) + 1);
+	if (!str)
+		return (NULL);
+	while (str1[++i])
+		str[i] = str1[i];
+	j = i;
+	i = -1;
+	while (s2[++i])
+		str[j++] = s2[i];
+	str[j] = '\0';
+	free(str1);
+	return (str);
 }
 
 int	ft_strlen(char *s)
